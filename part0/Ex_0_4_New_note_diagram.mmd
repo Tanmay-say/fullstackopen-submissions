@@ -25,3 +25,13 @@ sequenceDiagram
     deactivate server
 
     Note right of browser: The browser executes the callback function that renders the notes
+
+    Note over browser: on clicking on submit , the browser will send the user input to the server.
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/notes
+    activate server
+    server-->>browser: HTTP status code 302
+    deactivate server
+
+    Note right of browser : So, the browser reloads the Notes page. The reload causes three more HTTP requests
+    Note right of browser : fetching main.css,main.js, and the raw data of the notes (data.json).
