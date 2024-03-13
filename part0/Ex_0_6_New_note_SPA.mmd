@@ -1,0 +1,12 @@
+
+sequenceDiagram
+    participant CLIENT
+    participant SERVER
+CLIENT->>SERVER : HTTP GET https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+activate SERVER
+Note over CLIENT : [{ "content": "HTML is easy", "date": "Fri, 08 Mar 2024 12:22:09 GMT"}, ... ]
+SERVER-->>CLIENT : 201 created
+deactivate SERVER
+
+Note over CLIENT : browser execute the event handler that render notes to display
+
