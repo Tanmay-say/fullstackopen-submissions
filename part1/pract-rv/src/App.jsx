@@ -1,26 +1,24 @@
-const App = () => {
-  const now = new Date()
-  const a = 10
-  const b = 20
-  console.log(now, a+b)
+
+const App1 = () => {
+  const friends = [ 'Tanmay1', 'Sayare1']
+
   return (
     <div>
-      <p>Hello world, it is {now.toString()}</p>
-      <p>
-        {a} plus {b} is {a + b}
-      </p>
-      <Hello name='Tanmay' surname='Sayare'/>
-      <Hello name='Sayare'/>
+      <p>{friends}</p>
     </div>
   )
 }
 
-
-const Hello = (props) => {
-  console.log(props)
+const App = () => {
+  const friends = [
+    {name:'Tanmay' , age : 20},
+    {name:'Sultan' , age : 38},
+  ]
   return (
     <div>
-      <p>Hello {props.name} {props.surname}</p>
+      <p>{friends[0].name}{friends[0].age}</p>
+      <p>{friends[1].name}{friends[1].age}</p>
+      <App1 />
     </div>
   )
 }
