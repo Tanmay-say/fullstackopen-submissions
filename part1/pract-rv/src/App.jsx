@@ -1,29 +1,26 @@
-const App = () => {
-  const friends = [
-    {name:'Tanmay' , age : 20},
-    {name:'Sultan' , age : 38},
-  ]
-  return (
-    <div>
-      <Friend  friends={friends}/>
-    </div>
-  )
-}
+import { useState } from 'react'
 
-const Diff = (props) => {
-  return(
-    <div>
-      <h1>My name is {props.friends.name} and my age is {props.friends.age}</h1>
-    </div>
-  )
-}
-const Friend = (props) => {
+const App = () => {
+
+  const [ counter, setCounter ] = useState(0)
+
+  console.log('rendering...', counter)
+
+  if(counter != 20){
+  setTimeout(
+    () => setCounter(counter + 1),
+    1000
+  )}
+  else{
+    setTimeout(
+      () => setCounter(0),
+      1000
+    )// reset the counter to 0;
+  }
+
   return (
-    <div>
-      <Diff friends={props.friends[0]}/>
-      <Diff friends={props.friends[1]}/>
-    </div>
-  )  
+    <div><h1>Counter is {counter}</h1></div>
+  )
 }
 
 export default App
