@@ -1,14 +1,3 @@
-
-const App1 = () => {
-  const friends = [ 'Tanmay1', 'Sayare1']
-
-  return (
-    <div>
-      <p>{friends}</p>
-    </div>
-  )
-}
-
 const App = () => {
   const friends = [
     {name:'Tanmay' , age : 20},
@@ -16,11 +5,25 @@ const App = () => {
   ]
   return (
     <div>
-      <p>{friends[0].name}{friends[0].age}</p>
-      <p>{friends[1].name}{friends[1].age}</p>
-      <App1 />
+      <Friend  friends={friends}/>
     </div>
   )
+}
+
+const Diff = (props) => {
+  return(
+    <div>
+      <h1>My name is {props.friends.name} and my age is {props.friends.age}</h1>
+    </div>
+  )
+}
+const Friend = (props) => {
+  return (
+    <div>
+      <Diff friends={props.friends[0]}/>
+      <Diff friends={props.friends[1]}/>
+    </div>
+  )  
 }
 
 export default App
