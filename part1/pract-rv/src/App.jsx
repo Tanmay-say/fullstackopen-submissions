@@ -38,17 +38,17 @@ const App = () => {
   );
 };
 
-const Button = (props) => {
+const Button = ({onClick, text}) => {
   return (
-    <button onClick={props.onClick}>
-      {props.text}
+    <button onClick={onClick}>
+      {text}
     </button>
   );
 };
-const Display = (props) => {
+const Display = ({counter}) => {
   return( <div>
     <h1>
-    Counter = {props.counter}
+    Counter = {counter}
     </h1>
     </div>);
 }
