@@ -27,6 +27,7 @@ const App = () => {
       else{
         setTimeout(
           () => setCounter(0),
+          prompt("can't increment anymore resetting to 0")
         )// reset the counter to 0;
       }
     console.log('Inceremented')
@@ -40,6 +41,7 @@ const App = () => {
   }else{
     setTimeout(
       () => setCounter(0),
+      prompt("can't decrement anymore resetting to 0")
     )// reset the counter to 0;
   }
     console.log('Decremented')
