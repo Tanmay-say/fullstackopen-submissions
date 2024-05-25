@@ -1,68 +1,55 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 const App = () => {
-
-  const [ counter, setCounter ] = useState(0)
-
-
-  /*if(counter != 20){
-  setTimeout(
-    () => setCounter(counter + 1),
-    1000
-  )}
-  else{
-    setTimeout(
-      () => setCounter(0),
-      1000
-    )// reset the counter to 0;
-  }
-
-  console.log('rendering...', counter)*/
+  const [counter, setCounter] = useState(0);
+  console.log('rendering with counter value', counter)
 
   const inc = () => {
-    if(counter != 10){
-      setTimeout(
-        () => setCounter(counter + 1),
-      )}
-      else{
-        setTimeout(
-          () => setCounter(0),
-          prompt("can't increment anymore resetting to 0")
-        )// reset the counter to 0;
-      }
-    console.log('Inceremented')
-  }
+    console.log('increasing, value before', counter)
+    if (counter !== 10) {
+      setCounter(counter + 1);
+    } else {
+      alert("Counter reached 10, resetting to 0");
+      setCounter(0);
+    }
+  };
 
   const dec = () => {
-    if(counter > -10){
-    setTimeout(
-      () => setCounter(counter - 1),
-    )
-  }else{
-    setTimeout(
-      () => setCounter(0),
-      prompt("can't decrement anymore resetting to 0")
-    )// reset the counter to 0;
-  }
-    console.log('Decremented')
-  }
+    console.log('decreasing, value before', counter)
+    if (counter > -10) {
+      setCounter(counter - 1);
+    } else {
+      alert("Counter reached -10, resetting to 0");
+      setCounter(0);
+    }
+  };
 
-  console.log('Counter value = ', counter)
-
+  const zero = () => {
+    console.log('resetting to zero, value before', counter)
+    setCounter(0);
+  };
   return (
     <div>
-      <h1>Counter = {counter}</h1>
-      <button onClick={inc}>
-        INC
-      </button>
-      <button onClick={dec}>
-        DEC
-      </button>
-      <button onClick={() => setCounter(0)}>
-        ZERO
-      </button>
+      <Display counter={counter}/>
+      <Button onClick={inc}  text={'INC'}/>
+      <Button onClick={dec} text={'DEC'}/>
+      <Button onClick={zero} text={'ZERO'}/>
     </div>
-  )
-}
+  );
+};
 
-export default App
+const Button = (props) => {
+  return (
+    <button onClick={props.onClick}>
+      {props.text}
+    </button>
+  );
+};
+const Display = (props) => {
+  return( <div>
+    <h1>
+    Counter = {props.counter}
+    </h1>
+    </div>);
+}
+export default App;
