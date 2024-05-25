@@ -1,55 +1,62 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const App = () => {
-  const [counter, setCounter] = useState(0);
-  console.log('rendering with counter value', counter)
+  const [clicks, setClicks] = useState({
+    left: 0,
+    right: 0
+  });
 
-  const inc = () => {
-    console.log('increasing, value before', counter)
-    if (counter !== 10) {
-      setCounter(counter + 1);
-    } else {
-      alert("Counter reached 10, resetting to 0");
-      setCounter(0);
+  console.log('rendering with clicks value', clicks);
+
+  const handleLeftClick = (operation) => {
+    if (operation === "inc") {
+      const newClick = {
+        left: clicks.left + 1,
+        right: clicks.right
+      };
+      setClicks(newClick);
+      console.log('increasing, left value before', clicks);
+    } else if (operation === "dec") {
+      const newClick = {
+        left: clicks.left - 1,
+        right: clicks.right
+      };
+      setClicks(newClick);
+      console.log('decreasing, left value before', clicks);
     }
   };
 
-  const dec = () => {
-    console.log('decreasing, value before', counter)
-    if (counter > -10) {
-      setCounter(counter - 1);
-    } else {
-      alert("Counter reached -10, resetting to 0");
-      setCounter(0);
+  const handleRightClick = (operation) => {
+    if (operation === "inc") {
+      const newClick = {
+        left: clicks.left,
+        right: clicks.right + 1
+      };
+      setClicks(newClick);
+      console.log('increasing, right value before', clicks);
+    } else if (operation === "dec") {
+      const newClick = {
+        left: clicks.left,
+        right: clicks.right - 1
+      };
+      setClicks(newClick);
+      console.log('decreasing, right value before', clicks);
     }
   };
 
-  const zero = () => {
-    console.log('resetting to zero, value before', counter)
-    setCounter(0);
-  };
   return (
     <div>
-      <Display counter={counter}/>
-      <Button onClick={inc}  text={'INC'}/>
-      <Button onClick={dec} text={'DEC'}/>
-      <Button onClick={zero} text={'ZERO'}/>
+    <p>
+      {clicks.left}
+      <button onClick={() => handleLeftClick("inc")}>INC left</button>
+      <button onClick={() => handleLeftClick("dec")}>DEC left</button>
+      Choose option
+      <button onClick={() => handleRightClick("inc")}>INC right</button>
+      <button onClick={() => handleRightClick("dec")}>DEC right</button>
+      {clicks.right}
+      </p>
     </div>
   );
 };
 
-const Button = ({onClick, text}) => {
-  return (
-    <button onClick={onClick}>
-      {text}
-    </button>
-  );
-};
-const Display = ({counter}) => {
-  return( <div>
-    <h1>
-    Counter = {counter}
-    </h1>
-    </div>);
-}
 export default App;
