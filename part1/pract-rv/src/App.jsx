@@ -44,6 +44,14 @@ const App = () => {
     }
   };
 
+  const reset = () => {
+    const newClick = {
+      left: 0,
+      right: 0
+    };
+    setClicks(newClick);
+    console.log('resetting to zero, value before', clicks);
+  }
   return (
     <div>
     <p>
@@ -55,6 +63,7 @@ const App = () => {
       <button onClick={() => handleRightClick("dec")}>DEC right</button>
       {clicks.right}
       </p>
+      <p><button onClick={reset}>Reset</button></p>
     </div>
   );
 };
