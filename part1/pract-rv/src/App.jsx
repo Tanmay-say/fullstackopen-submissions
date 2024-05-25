@@ -56,16 +56,23 @@ const App = () => {
     <div>
     <p>
       {clicks.left}
-      <button onClick={() => handleLeftClick("inc")}>INC left</button>
-      <button onClick={() => handleLeftClick("dec")}>DEC left</button>
+      <Button onClick={() => handleLeftClick("inc")} text="INC left"/>
+      <Button onClick={() => handleLeftClick("dec")} text="DEC left"/>
       Choose option
-      <button onClick={() => handleRightClick("inc")}>INC right</button>
-      <button onClick={() => handleRightClick("dec")}>DEC right</button>
+      <Button onClick={() => handleRightClick("inc")} text="INC right"/>
+      <Button onClick={() => handleRightClick("dec")} text="DEC right"/>
       {clicks.right}
       </p>
-      <p><button onClick={reset}>Reset</button></p>
+      <p><Button onClick={reset} text={"reset"}/> </p>
     </div>
   );
 };
+
+const Button = ({onClick,text}) => {
+    return (
+      <button onClick={onClick}>{text}</button>
+    );
+
+}
 
 export default App;
