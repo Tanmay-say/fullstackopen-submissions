@@ -13,16 +13,32 @@ const App = () => {
   console.log('rendering with clicks value', allClicks);
 
 
-  /*const handleLeftClick = () => {
-    setAll(allClicks.concat('L'));
+  const handleLeftClick = () => {
+    allClicks.push('L')
+    setAll(allClicks);
     setLeft(left + 1);
   }
 
   const handleRightClick = () => {
-    setAll(allClicks.concat('R'));
+    allClicks.push('R')
+    setAll(allClicks);
     setRight(right + 1);
-  }*/
-  const handleLeftClick = (operation) => {
+  }
+
+  const pop = () => {
+    if (allClicks.length > 0) {
+      const lastClick = allClicks[allClicks.length - 1];
+      const newAllClicks = allClicks.slice(0, -1);
+      setAll(newAllClicks);
+      if (lastClick === 'L') {
+        setLeft(left - 1);
+      } else if (lastClick === 'R') {
+        setRight(right - 1);
+      }
+    }
+  };
+  
+  /*const handleLeftClick = (operation) => {
     if (operation === "inc") {
       setAll(allClicks.concat('L+'));
       setLeft(left + 1);
@@ -44,7 +60,7 @@ const App = () => {
       setRight(right - 1);
       console.log('decreasing, right value before', allClicks);
     }
-  };
+  };*/
 
   const reset = () => {
     setAll([]);
@@ -52,8 +68,10 @@ const App = () => {
     setRight(0);
     console.log('resetting to zero, value before', allClicks);
   }
+
+
   return (
-    <div>
+    /*.<div>
     <p>
       {left}
       <Button onClick={() => handleLeftClick("inc")} text="INC left"/>
@@ -65,14 +83,16 @@ const App = () => {
       </p>
       <p><Button onClick={reset} text={"reset"}/> </p>
       <p>{allClicks.join(' ')}</p>
-    </div>
-    /*<div>
+    </div>*/
+    <div>
     {left}
-    <button onClick={handleLeftClick}>left</button>
-    <button onClick={handleRightClick}>right</button>
+    <Button onClick={handleLeftClick} text={'Push left'} />
+    <Button onClick={handleRightClick} text={'Push right'}/>
     {right}
+    <p><Button onClick={reset} text={"reset"}/>
+    <Button onClick={pop} text={"POP"}/> </p>
     <p>{allClicks.join(' ')}</p>
-  </div>*/
+  </div>
 );
 };
 
