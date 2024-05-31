@@ -28,9 +28,9 @@ const App = () => {
         <StatisticLine text='good' value={good} />
         <StatisticLine text='neutral' value={neutral} />
         <StatisticLine text='bad' value={bad} />
-        <p>all {total}</p>
-        <p>average {average.toFixed(2)}</p>
-        <p>positive {positivePercentage.toFixed(2)} %</p>
+        <StatisticLine text={'total'} value={total} />
+        <StatisticLine text='average' value={average.toFixed(2)} />
+        <StatisticLine text='positive' value={positivePercentage.toFixed(2)} />
       </div>
     )
   
@@ -38,7 +38,9 @@ const App = () => {
 
   const StatisticLine = ({text, value}) => {
     return (
-      <p>{text} {value}</p>
+      <table>
+        <td>{text} {value}</td>
+      </table>
     )
   }
 
