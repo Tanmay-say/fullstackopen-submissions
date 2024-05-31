@@ -51,3 +51,16 @@
   text-decoration: none;
   cursor: pointer;
 }
+.cirlceButton {
+  width: 100px;
+  height: 100px;
+  background-color: #333;
+  border-radius: 20em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px;
+}
