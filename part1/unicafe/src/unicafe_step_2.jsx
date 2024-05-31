@@ -19,15 +19,11 @@ const App = () => {
     </div>
   )
 }
+
 const Calculation = ({good , neutral , bad }) => {
-  // Calculate the total number of feedback
-  const total = good + neutral + bad
-
-  // Calculate the average score
-  const average = (good - bad) / total
-
-  // Calculate the percentage of positive feedback
-  const positivePercentage =  (good / total) * 100
+  const total = good + neutral + bad  // Calculate the total number of feedback
+  const average = (good - bad) / total  // Calculate the average score
+  const positivePercentage =  (good / total) * 100 // Calculate the percentage of positive feedback
 
   if(total === 0){
     return <p>No feedback given</p>
