@@ -40,3 +40,27 @@
 .read-the-docs {
   color: #888;
 }
+
+.button {
+  padding: 0.5em 1em;
+  margin: 0.5em;
+  border: 1px solid #888;
+  border-radius: 0.9em;
+  background-color: #e98787;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+.cirlceButton {
+  width: 100px;
+  height: 100px;
+  background-color: #333;
+  border-radius: 20em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px;
+}

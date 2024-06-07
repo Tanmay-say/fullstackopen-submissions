@@ -1,26 +1,25 @@
-
-const App1 = () => {
-  const friends = [ 'Tanmay1', 'Sayare1']
-
-  return (
-    <div>
-      <p>{friends}</p>
-    </div>
-  )
-}
-
+import { useState } from "react";
 const App = () => {
-  const friends = [
-    {name:'Tanmay' , age : 20},
-    {name:'Sultan' , age : 38},
-  ]
+  const [value, setValue] = useState(10)
+
+
+  const setToValue = (newValue) =>  {
+    console.log('value now', newValue)  // print the new value to console
+    setValue(newValue)
+  }
   return (
     <div>
-      <p>{friends[0].name}{friends[0].age}</p>
-      <p>{friends[1].name}{friends[1].age}</p>
-      <App1 />
+      {value}
+      <Button handleClick={() => setToValue(1000)} text="thousand" />
+      <Button handleClick={() => setToValue(0)} text="reset" />
+      <Button handleClick={() => setToValue(value + 1)} text="increment" />
     </div>
   )
 }
 
-export default App
+const Button = (props) => (
+  <button onClick={props.handleClick}>
+    {props.text}
+  </button>
+)
+export default App;
