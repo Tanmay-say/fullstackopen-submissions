@@ -51,10 +51,8 @@ const Part = ({ part }) => {
   return <p>{part.name} {part.exercises}</p>
 }
 const Total = ({ parts }) => {
-  let total = 0
-  parts.map(part => {
-    total += part.exercises
-  })
+  const total = parts.reduce((sum , part ) => sum + part.exercises , 0)
+  console.log(total)
   return(
     <div>
       <p><strong>total of {total} exercises</strong></p>
