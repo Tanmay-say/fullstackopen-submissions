@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: 'Arto Hellas' }
+    { id : 1 , name: 'Arto Hellas' }
   ]) 
   const [newName, setNewName] = useState('')
 
@@ -12,9 +12,13 @@ const App = () => {
       name: newName,
       id: persons.length + 1,
     }
-    setPersons(persons.concat(personObject))
-    setNewName(' ')
-  }
+    const nameExists = persons.some(person => person.name === newName) ?
+      alert(`${newName} is already added to phonebook`)
+     :
+      setPersons(persons.concat(personObject))
+      setNewName('')
+    }
+
   const handleNameChange = (event) => {
     setNewName(event.target.value)
   }
