@@ -1,8 +1,16 @@
-docker run \
-    -u "$(id -u):$(id -g)" \
-    -v $(pwd):/work \
-    -w /work \
-    -it \
-    --network host \
-    node:20.11.0 $@
+#!/bin/bash
 
+# Function to run commands in Docker
+run_command_in_docker() {
+    docker run \
+        -u "$(id -u):$(id -g)" \
+        -v "$(pwd)":/work \
+        -w /work \
+        -it \
+        --network host \
+        node:20.11.0 \
+        bash -c "$@"
+}
+
+# Pass all the arguments to the function
+run_command_in_docker "$@"
